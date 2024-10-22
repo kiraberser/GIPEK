@@ -1,0 +1,8 @@
+axios: Para las solicitudes HTTP a la API de Django.
+formik y react-hook-form: Para la validación y manejo de formularios.
+tailwindcss: Para los estilos responsivos.
+heroicons y headlessui: Para componentes visuales como listas, dropdowns, etc.
+react-helmet: Para SEO y control de los metadatos en las páginas.
+
+npm install @reduxjs/toolkit npm install react-redux
+jest: Para realizar pruebas unitarias en el frontend.

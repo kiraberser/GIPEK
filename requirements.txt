@@ -1,0 +1,44 @@
+# Django framework
+Django==4.2
+
+# Django REST framework for API creation
+djangorestframework==3.14.0
+
+# JWT Authentication
+djangorestframework-simplejwt==5.2.2
+
+# PostgreSQL/MySQL (usa el que necesites)
+psycopg2==2.9.8 # Para PostgreSQL
+mysqlclient==2.1.1 # Para MySQL
+
+# Image handling
+Pillow==10.0.0
+
+# Caching (Redis)
+django-redis==5.3.0
+
+# Email services
+django-anymail[sendgrid]==9.0  # Si usas SendGrid para emails
+
+# CORS (Cross-Origin Resource Sharing) for React-Django integration
+django-cors-headers==4.0.0
+
+# Security improvements (SSL, headers, etc.)
+django-secure==0.3.1
+
+# Pagination
+django-rest-framework-pagination==1.0.0
+
+# Testing tools
+pytest==7.4.0
+pytest-django==4.5.2
+
+# Monitoring/Logging
+sentry-sdk==1.29.2
+
+# For production (use the server you're deploying on)
+gunicorn==20.1.0  # Para Heroku u otros servidores
+whitenoise==6.5.0  # Static file serving en producción
+
+# Environment variables management
+python-decouple==3.8
