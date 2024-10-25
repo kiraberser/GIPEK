@@ -11,26 +11,42 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+import environ 
+
+env = environ.Env()
+environ.Env.read_env()
+
+ENVIRONMENT = env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+SITE_NAME = 'GIPEK'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-v@%r+3xdrvuc-_6vlad=31)i21a=944v!z44k)%h%1&6=bgn@x'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+if DEBUG:
+    ALLOWED_HOSTS = [
+        "localhost",
+        '127.0.0.1'
+    ]
+else:
+    ALLOWED_HOSTS = [
+        "www.gipek.com"
+    ]
 
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,9 +55,35 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+PROJECT_APPS = [
+    'backend.contact'
+]
+
+THIRD_PARTY_APPS = [
+    'rest_framework',               # Django REST framework
+    'corsheaders',                  # Para manejar CORS
+    'ckeditor',                     # Editor de texto enriquecido
+    'ckeditor_uploader',            # Subida de archivos para CKEditor
+    'django_redis',                 # Caching con Redis
+    'anymail',                      # Servicios de email (SendGrid)          # Cross-Origin Resource Sharing (CORS)              # Mejoras de seguridad
+    'rest_framework_simplejwt',     # JWT Authentication
+    'whitenoise.runserver_nostatic' # Servir archivos estáticos en producción
+]
+
+INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'autoParagraph': False
+    }
+}
+CKEDITOR_UPLOAD_PATH = "/media/"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -54,7 +96,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend', 'dist')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,7 +122,28 @@ DATABASES = {
     }
 }
 
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
+
+if DEBUG:
+    CORS_ALLOWED_ORIGINS = [
+        'http://localhost:5173',  # Origen permitido en modo DEBUG
+        'http://localhost:8000',   # Origen permitido en modo DEBUG
+    ]
+else:
+    CSRF_TRUSTED_ORIGINS = [
+        'http://localhost:5173',  # Origen de confianza en producción
+        'http://localhost:8000',   # Origen de confianza en producción
+    ]
+
+
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
+    "django.contrib.auth.hashers.Argon2PasswordHasher",
+    "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
+    "django.contrib.auth.hashers.ScryptPasswordHasher",
+]
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -100,6 +163,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -115,9 +179,38 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/assets/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend', 'dist', 'assets'),  # Asegúrate de que apunte a donde están tus archivos
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 16
+}
+
+FILE_UPLOAD_PERMISSIONS = 0o640
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+if not DEBUG:
+    DEFAULT_FROM_EMAIL=""
+    EMAIL_BACKEND=""
+    EMAIL_HOST=""
+    EMAIL_HOST_USER=""
+    EMAIL_HOST_PASSWORD=""
+    EMAIL_PORT=""
+    EMAIL_USE_TLS=""
