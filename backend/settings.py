@@ -56,14 +56,14 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
-    'backend.contact'
+    'backend.contact',
+    'backend.plants',
+    'backend.api'
 ]
 
 THIRD_PARTY_APPS = [
     'rest_framework',               # Django REST framework
     'corsheaders',                  # Para manejar CORS
-    'ckeditor',                     # Editor de texto enriquecido
-    'ckeditor_uploader',            # Subida de archivos para CKEditor
     'django_redis',                 # Caching con Redis
     'anymail',                      # Servicios de email (SendGrid)          # Cross-Origin Resource Sharing (CORS)              # Mejoras de seguridad
     'rest_framework_simplejwt',     # JWT Authentication

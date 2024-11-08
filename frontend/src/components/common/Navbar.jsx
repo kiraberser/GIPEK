@@ -1,5 +1,7 @@
-import { ShoppingCart, Menu } from 'lucide-react'; 
+import { ShoppingCart, Menu } from 'lucide-react';
+import { Outlet, Link } from "react-router-dom";
 import { useState } from 'react';
+import ShoppingCard from '../specificComponent/ShoppingCard';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,28 +26,30 @@ export default function Navbar() {
                   d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
                 />
               </svg>
-              <a href='home/'><span className="ml-2 text-xl font-bold text-gray-800" >GIPEK</span></a>
+              <Link to={'/'}><span className="ml-2 text-xl font-bold text-gray-800" >Gipek</span></Link>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-              <a href="about/" className="border-transparent text-gray-500 hover:border-green-600 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              <Link
+                to="/about"
+                className="border-transparent text-gray-500 hover:border-green-600 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+              >
                 Sobre Nosotros
+              </Link>
+              <a className="border-transparent text-gray-500 hover:border-green-600 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                <Link to={'/products'}>
+                  Productos
+                </Link>
               </a>
-              <a href="services/" className="border-transparent text-gray-500 hover:border-green-600 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                Servicios
-              </a>
-              <a href="blog/" className="border-transparent text-gray-500 hover:border-green-600 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                Blog
+              <a  className="border-transparent text-gray-500 hover:border-green-600 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Plantas
               </a>
             </div>
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
-            <button className="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition duration-300 mr-4">
+            <Link to={'/contact'} className="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition duration-300 mr-4">
               Contacto
-            </button>
-            <button className="p-2 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-              <span className="sr-only">View shopping cart</span>
-              <ShoppingCart className="h-6 w-6" aria-hidden="true" />
-            </button>
+            </Link>
+            <ShoppingCard/>
           </div>
           <div className="-mr-2 flex items-center sm:hidden">
             <button
@@ -65,11 +69,13 @@ export default function Navbar() {
             <a href="#" className="border-transparent text-gray-700 block hover:bg-green-50 hover:border-green-300 pl-3 pr-4 py-2 border-l-4 text-base font-medium">
               Home
             </a>
-            <a href="#" className="border-transparent text-gray-700 hover:bg-green-50 hover:border-green-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+            <Link to={'/about'} className="border-transparent text-gray-700 hover:bg-green-50 hover:border-green-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
               Sobre Nosotros
-            </a>
-            <a href="#" className="border-transparent text-gray-700 hover:bg-green-50 hover:border-green-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
-              Productos
+            </Link>
+            <a className="border-transparent text-gray-700 hover:bg-green-50 hover:border-green-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+              <Link to={'/products'}>
+                Productos
+              </Link>
             </a>
             <a href="#" className="border-transparent text-gray-700 hover:bg-green-50 hover:border-green-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
               Blog
@@ -78,7 +84,7 @@ export default function Navbar() {
           <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="flex items-center px-4">
               <button className="flex-shrink-0 bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition duration-300 mr-4">
-                CONTACTANOS
+                Contactanos
               </button>
               <button className="ml-auto p-2 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
                 <span className="sr-only">View shopping cart</span>
