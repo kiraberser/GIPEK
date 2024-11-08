@@ -2,6 +2,7 @@ import { ShoppingCart, Menu } from 'lucide-react';
 import { Outlet, Link } from "react-router-dom";
 import { useState } from 'react';
 import ShoppingCard from '../specificComponent/ShoppingCard';
+import Avatar from '../specificComponent/Avatar';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,6 +51,7 @@ export default function Navbar() {
               Contacto
             </Link>
             <ShoppingCard/>
+            <Avatar/>
           </div>
           <div className="-mr-2 flex items-center sm:hidden">
             <button

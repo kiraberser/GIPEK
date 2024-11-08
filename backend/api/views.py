@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from backend.contact.models import Contact
-from .serializers import UserSerializer, NoteSerializer
+from .serializers import UserSerializer
 
 from rest_framework import generics
 
