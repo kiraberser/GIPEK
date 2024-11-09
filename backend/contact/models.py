@@ -5,4 +5,3 @@ class Contact(models.Model):
     name = models.CharField( max_length=50)
     content = models.CharField( max_length=50)
     email = models.EmailField(max_length=50)
-    tel = models.IntegerField()

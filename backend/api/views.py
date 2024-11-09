@@ -4,8 +4,11 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.permissions import IsAuthenticated, AllowAny
+
 from backend.contact.models import Contact
-from .serializers import UserSerializer
+from backend.user.models import CreateUser
+
+from .serializers import UserSerializer, CreateUserSerializer
 
 from rest_framework import generics
 
@@ -20,6 +23,18 @@ def get_contacts(request):
 class CreateContact(generics.CreateAPIView):
     queryset = Contact.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [AllowAny]
+    
+    def perfom_create(self, serializer):
+        if serializer.is_valid():
+            serializer.save(author=self.request.user)
+        else:
+            print(serializer.errors)
+
+
+class CreateUsername(generics.CreateAPIView):
+    queryset = CreateUser.objects.all()
+    serializer_class = CreateUserSerializer
     permission_classes = [AllowAny]
     
     def perfom_create(self, serializer):

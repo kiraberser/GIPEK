@@ -57,7 +57,8 @@ DJANGO_APPS = [
 PROJECT_APPS = [
     'backend.contact',
     'backend.plants',
-    'backend.api'
+    'backend.api',
+    'backend.user'
 ]
 
 THIRD_PARTY_APPS = [
@@ -66,6 +67,7 @@ THIRD_PARTY_APPS = [
     'django_redis',                 # Caching con Redis
     'anymail',                      # Servicios de email (SendGrid)          # Cross-Origin Resource Sharing (CORS)              # Mejoras de seguridad
     'rest_framework_simplejwt',     # JWT Authentication
+    'rest_framework.authtoken',
     'whitenoise.runserver_nostatic' # Servir archivos estáticos en producción
 ]
 
