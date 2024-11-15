@@ -1,10 +1,11 @@
-import { CheckCircle } from 'lucide-react';
+import { CheckCircleIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const tiers = [
   {
     name: 'Manual',
     id: 'tier-basico',
-    href: '#',
+    href: '/products',
     priceMonthly: '$80',
     description: "Ideal para principiantes que desean una maceta básica para sus plantas.",
     features: [
@@ -16,7 +17,7 @@ const tiers = [
   {
     name: 'Automático',
     id: 'tier-avanzado',
-    href: '#',
+    href: '/products',
     priceMonthly: '$100',
     description: 'Incluye un sistema de riego automatizado con opciones adicionales y mayor capacidad.',
     features: [
@@ -43,33 +44,23 @@ export default function PriceSection() {
         </p>
       </div>
 
-      <div className="mx-auto mt-12 grid max-w-lg grid-cols-1 gap-8 sm:mt-16 sm:max-w-none sm:grid-cols-2 lg:max-w-4xl">
+      <div className="mx-auto mt-12 grid grid-rows-[1fr_auto] max-w-lg grid-cols-1 gap-8 sm:mt-16 sm:max-w-none sm:grid-cols-2 lg:max-w-4xl">
         {tiers.map((tier) => (
           <div
             key={tier.id}
             className={classNames(
-              tier.featured
-                ? 'bg-green-500 text-white shadow-lg'
-                : 'bg-gray-100 text-green-900',
-              'rounded-3xl p-8 ring-1 ring-gray-900/10 transition-all duration-200 ease-in-out hover:shadow-2xl'
+              tier.featured ? 'bg-green-500 text-white shadow-lg' : 'bg-gray-100 text-green-900',
+              'rounded-3xl p-8 ring-1 ring-gray-900/10 transition-all duration-200 ease-in-out hover:shadow-2xl flex flex-col'
             )}
           >
             <h3
               id={tier.id}
-              className={classNames(
-                tier.featured ? 'text-white' : 'text-green-600',
-                'text-lg font-semibold leading-7 uppercase'
-              )}
+              className={classNames(tier.featured ? 'text-white' : 'text-green-600', 'text-lg font-semibold leading-7 uppercase')}
             >
               {tier.name}
             </h3>
             <p className="mt-4 flex items-baseline gap-x-2">
-              <span
-                className={classNames(
-                  tier.featured ? 'text-white' : 'text-gray-900',
-                  'text-4xl font-bold tracking-tight'
-                )}
-              >
+              <span className={classNames(tier.featured ? 'text-white' : 'text-gray-900', 'text-4xl font-bold tracking-tight')}>
                 {tier.priceMonthly}
               </span>
             </p>
@@ -79,32 +70,30 @@ export default function PriceSection() {
             <ul className="mt-6 space-y-4 text-sm leading-6">
               {tier.features.map((feature) => (
                 <li key={feature} className="flex items-center gap-x-2">
-                  <CheckCircle
+                  <CheckCircleIcon
                     aria-hidden="true"
-                    className={classNames(
-                      tier.featured ? 'text-green-200' : 'text-green-500',
-                      'h-6 w-6 flex-none'
-                    )}
+                    className={classNames(tier.featured ? 'text-green-200' : 'text-green-500', 'h-6 w-6 flex-none')}
                   />
                   {feature}
                 </li>
               ))}
             </ul>
-            <a
-              href={tier.href}
-              aria-describedby={tier.id}
-              className={classNames(
-                tier.featured
-                  ? 'bg-white text-green-600 hover:bg-green-100'
-                  : 'bg-green-600 text-white hover:bg-green-700',
-                'mt-8 inline-block w-full rounded-md py-2 px-4 text-center text-sm font-semibold'
-              )}
-            >
-              Comprar Ahora
-            </a>
+            <div className="mt-auto"> {/* This div pushes the button to the bottom */}
+              <Link
+                to={`${tier.href}`}
+                aria-describedby={tier.id}
+                className={classNames(
+                  tier.featured ? 'bg-white text-green-600 hover:bg-green-100' : 'bg-green-600 text-white hover:bg-green-700',
+                  'mt-4 inline-block w-full rounded-md py-2 px-4 text-center text-sm font-semibold'
+                )}
+              >
+                Comprar Ahora
+              </Link>
+            </div>
           </div>
         ))}
       </div>
     </div>
+
   );
 }

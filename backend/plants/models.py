@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 class Species(models.Model):
-    family = models.CharField(max_length=50)
     plant = models.CharField(max_length=70)
     scientific_name = models.CharField(max_length=80)
     description = models.TextField(blank=True, null=True)

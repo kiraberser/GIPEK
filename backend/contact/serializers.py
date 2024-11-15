@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers 
 
-from backend.contact.models import Contact
+from backend.contact.models import Contact, SubscribeBlog
 
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,4 +17,10 @@ class ContactSerializer(serializers.ModelSerializer):
         contact = Contact.objects.create(**validated_data)
         return contact
 
-    
+class SubscribeBlogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SubscribeBlog
+        fields = [
+            
+            'email'
+        ]

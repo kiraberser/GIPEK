@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers 
 
-from backend.user.models import CreateUser
+from backend.user.models import CreateUser, SubscribeBlog
 
 class CreateUserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,4 +12,9 @@ class CreateUserSerializer(serializers.ModelSerializer):
     def create_user(self, validated_data):
         user = User.objects.create_user(**validated_data)
         return user
-        
+    
+    def login_user(request):
+        pass
+
+
+

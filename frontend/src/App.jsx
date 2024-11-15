@@ -5,10 +5,10 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import About from './pages/About';
 import Contact from './pages/Contact';
 import ProductList from './pages/ProductList';
-import Login from './pages/Login'
-import Register from './pages/Register';
+import Login from './components/common/Login';
 import Blog from './pages/Blog'
 import Error from './pages/Error'
+import Register from './components/common/Register';
 
 function Logout() {
   localStorage.clear()
@@ -21,7 +21,7 @@ function RegisterAndLogout() {
 }
 
 function App() {
-  const endpointForm = '/api/form/'
+  const endpointForm = '/api/form/contact/'
   return (
     <>
       <Navbar /> {/* Colocado fuera de Routes */}
