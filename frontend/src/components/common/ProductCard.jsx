@@ -1,17 +1,13 @@
-import React, { useState } from 'react';
 
-const ProductCard = ({ product }) => {
-    const [addProduct, setProduct] = useState(0)
-
+const ProductCard = ({ product, addToCart }) => {
     const handleClick = (e) => {
         e.preventDefault()
-        setProduct(addProduct + 1)
-        console.log(addProduct)
+        addToCart(product)
     }
 
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white m-4">
-      
+
       <img className="w-full h-48 object-cover" src={product.image} alt={product.name} />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{product.name}</div>

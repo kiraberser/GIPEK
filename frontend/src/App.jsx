@@ -1,13 +1,16 @@
-import Navbar from '../src/components/common/Navbar'
-import Footer from '../src/components/common/Footer'
-import Home from './pages/Home'
 import { Routes, Route, Navigate } from "react-router-dom";
+
+import Home from './pages/Home'
 import About from './pages/About';
 import Contact from './pages/Contact';
-import ProductList from './pages/ProductList';
-import Login from './components/common/Login';
 import Blog from './pages/Blog'
 import Error from './pages/Error'
+import CartPage from "./pages/CartPage";
+
+import Navbar from './components/common/Navbar'
+import Login from './components/common/Login';
+import Footer from './components/common/Footer'
+import ProductList from './components/common/ProductList';
 import Register from './components/common/Register';
 
 function Logout() {
@@ -20,7 +23,7 @@ function RegisterAndLogout() {
   return <Register/>
 }
 
-function App() {
+export default function App() {
   const endpointForm = '/api/form/contact/'
   return (
     <>
@@ -30,6 +33,7 @@ function App() {
         <Route path='*' element={<Error/>}/ >
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact route={endpointForm}/>} />
+        <Route path="/card" element={<CartPage/>}/>
         <Route path="/products" element={<ProductList />} />
         <Route path="/login" element={<Login/>} />
         <Route path="/logout" element={<Logout/>} />
@@ -41,4 +45,3 @@ function App() {
   );
 }
 
-export default App

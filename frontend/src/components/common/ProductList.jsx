@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCard from '../components/common/ProductCard';
+import ProductCard from './ProductCard';
 
 
 const ProductList = () => {
@@ -40,12 +40,14 @@ const ProductList = () => {
       image: '/assets/image_plant5.jpg',
     },
   ];
-  
+
 
   return (
     <div className="flex flex-wrap justify-center py-16">
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 py-4" key={product.id}>
+          <ProductCard product={product} />
+        </div>
       ))}
     </div>
   );

@@ -1,22 +1,33 @@
 import React, { useState } from 'react'
-import { ShoppingCart, Menu } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 
-function ShoppingCard({count}) {
-  const [itemCard, setItemCard] = useState(true)
+function ShoppingCard({ cartItems, setCartItems }) {
+  const handleClick = () => {
+    // Aquí puedes agregar la lógica para ver el carrito, 
+    // por ejemplo, redirigir a una página de carrito o mostrar un modal
+    console.log('Ver carrito de compras', cartItems);
+  };
+
+  const totalItems = 3;  // Contamos los productos en el carrito
 
   return (
-    <div className="relative">
-      <button className="p-2 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+    <div className="relative mr-3">
+      {/* Botón para ver el carrito */}
+      <button 
+        className="p-2 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+        onClick={handleClick}
+      >
         <span className="sr-only">Ver carrito de compras</span>
         <ShoppingCart className="h-6 w-6" aria-hidden="true" />
-        {count > 0 && (
-          <p className="absolute top-0 right-0 z-10 bg-red-600 rounded-full text-white text-sm w-5 h-5 flex items-center justify-center">
-            {count}
-          </p>
+        {/* Mostrar el número de productos en el carrito */}
+        {totalItems > 0 && (
+          <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+            {totalItems}
+          </span>
         )}
       </button>
     </div>
   )
 }
 
-export default ShoppingCard
+export default ShoppingCard;
