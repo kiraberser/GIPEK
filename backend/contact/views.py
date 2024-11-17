@@ -7,7 +7,6 @@ from rest_framework.views import APIView
 
 # Create your views here.
 
-from .models import Contact, SubscribeBlog
 from .serializers import ContactSerializer, SubscribeBlogSerializer
 
 @api_view(['POST'])

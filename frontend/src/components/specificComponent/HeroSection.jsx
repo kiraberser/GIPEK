@@ -8,7 +8,7 @@ export default function HeroSection() {
         <div className="text-start">
           <div className="flex justify-start mb-6 space-x-4 sm:space-x-6">
             <Leaf className="h-10 w-10 sm:h-12 sm:w-12 text-green-600" />
-            <Droplet className="h-10 w-10 sm:h-12 sm:w-12 text-green-600" />
+            <Droplet className="h-10 w-10 sm:h-12 sm:w-12 text-blue-400" />
             <Sun className="h-10 w-10 sm:h-12 sm:w-12 text-yellow-500" />
           </div>
           <h2 className="text-sm sm:text-base text-green-600 font-semibold tracking-wide uppercase">

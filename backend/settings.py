@@ -12,9 +12,12 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
-import environ 
+import environ
 
-env = environ.Env()
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -64,8 +67,6 @@ PROJECT_APPS = [
 THIRD_PARTY_APPS = [
     'rest_framework',               # Django REST framework
     'corsheaders',                  # Para manejar CORS
-    'django_redis',                 # Caching con Redis
-    'anymail',                      # Servicios de email (SendGrid)          # Cross-Origin Resource Sharing (CORS)              # Mejoras de seguridad
     'rest_framework_simplejwt',     # JWT Authentication
     'rest_framework.authtoken',
     'whitenoise.runserver_nostatic' # Servir archivos estáticos en producción

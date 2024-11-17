@@ -22,7 +22,7 @@ function TestimonialWidget({rtl}) {
       <Slider {...settings}>
         {items.map((item, index) => (
           <div key={index} className="p-4 ">
-            <div className='overflow-hidden rounded-2xl bg-gray-100 shadow-lg p-20 border-b-black'>
+            <div className='overflow-hidden rounded-2xl bg-gray-100 shadow-lg p-20 border border-gray-300'>
               <h3 className="text-lg font-bold">{item}</h3>
             </div>
           </div>
