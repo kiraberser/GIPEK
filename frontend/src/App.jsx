@@ -33,7 +33,7 @@ export default function App() {
         <Route path='*' element={<Error/>}/ >
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact route={endpointForm}/>} />
-        <Route path="/card" element={<CartPage/>}/>
+        <Route path="/cart" element={<CartPage/>}/>
         <Route path="/products" element={<ProductList />} />
         <Route path="/login" element={<Login/>} />
         <Route path="/logout" element={<Logout/>} />

@@ -27,28 +27,47 @@ export default function Footer() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    // Verificar que el email no esté vacío y sea válido
+    if (!email || !/\S+@\S+\.\S+/.test(email)) {
+      setErrorMessage("Por favor, ingresa un correo electrónico válido.");
+      return;
+    }
+  
     try {
       const res = await api.post(
         'api/form/',
-        { email: email },
+        { email },
         {
           headers: {
             'X-CSRFToken': csrfToken,
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
-          withCredentials: true
+          withCredentials: true,
         }
       );
-
-      setIsSubmitted(true);
-      setEmail("");
-      setErrorMessage("");
-      console.log("Newsletter signup successful:", res.status);
+  
+      // Verificar si la respuesta de la API fue exitosa
+      if (res.status === 200 || res.status === 201) {
+        setIsSubmitted(true);
+        setEmail(""); // Limpiar el campo de email
+        setErrorMessage("");
+        console.log("Formulario enviado correctamente:", res.data);
+      } else {
+        setErrorMessage("Hubo un problema al enviar tu información. Intenta nuevamente.");
+      }
     } catch (error) {
-      setErrorMessage("Hubo un error al enviar el formulario. Por favor, intenta de nuevo.");
-      console.error("Error during newsletter signup:", error);
+      // Manejo de errores más específico
+      if (error.response) {
+        setErrorMessage(error.response.data.message || "Hubo un problema en el servidor.");
+      } else if (error.request) {
+        setErrorMessage("No se pudo conectar con el servidor. Verifica tu conexión a internet.");
+      } else {
+        setErrorMessage("Ocurrió un error inesperado. Por favor, intenta nuevamente.");
+      }
     }
   };
+  
   return (
     <footer className="bg-gray-100">
       <div className="container mx-auto px-4 py-8">
@@ -74,6 +93,8 @@ export default function Footer() {
             <p className="text-gray-600 mb-4">
               Empoderando la conservación ambiental y creando un futuro sostenible para las generaciones venideras.
             </p>
+            {isSubmitted && <p className='text-green-600'>¡Te has suscrito con éxito!</p>}
+            {errorMessage && <p className='text-red-600'>{errorMessage}</p>}
             <form onSubmit={handleSubmit} className="flex">
               <input
                 type="email"
@@ -90,8 +111,7 @@ export default function Footer() {
                 Suscribirse
                 <ChevronRight className="ml-2 h-4 w-4" />
               </button>
-              {isSubmitted && <p>¡Te has suscrito con éxito!</p>}
-              {errorMessage && <p>{errorMessage}</p>}
+              
             </form>
           </div>
           <div>

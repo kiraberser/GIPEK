@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { ShoppingCart } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 function ShoppingCard({ cartItems, setCartItems }) {
+  const navigate = useNavigate()
   const handleClick = () => {
     // Aquí puedes agregar la lógica para ver el carrito, 
     // por ejemplo, redirigir a una página de carrito o mostrar un modal
-    console.log('Ver carrito de compras', cartItems);
+    navigate('/cart')
   };
 
   const totalItems = 3;  // Contamos los productos en el carrito
