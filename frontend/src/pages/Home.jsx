@@ -9,6 +9,7 @@ function Home() {
     <div>
         <HeroSection/>
         <Services/>
+
         <TestimonialWidget rtl={true}/>
         <TestimonialWidget rtl={false}/>
         <PriceSection/>

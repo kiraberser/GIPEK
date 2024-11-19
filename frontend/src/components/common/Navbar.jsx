@@ -45,7 +45,9 @@ export default function Navbar() {
                   d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
                 />
               </svg>
-              <Link to={'/'}><span className="ml-2 text-xl font-bold text-gray-800">Gipek</span></Link>
+              <div>
+                <Link to={'/'}><span className="ml-2 text-xl font-bold text-gray-800">Gipek</span></Link>
+              </div>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               <Link

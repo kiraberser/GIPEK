@@ -76,12 +76,12 @@ function Contact({ route }) {
               value={formData.username}
               onChange={handleChange}
               required
-              className="mt-1 p-2 block w-full rounded-md border-gray-700 shadow-md focus:border-green-500 focus:ring-green-500 sm:text-sm"
+              className="mt-1 p-2 block w-full rounded-md border border-gray-300 shadow-md focus:border-green-500 focus:ring-green-500 sm:text-sm"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Correo electrónico</label>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-800">Correo electrónico</label>
             <input
               type="email"
               name="email"
@@ -89,7 +89,7 @@ function Contact({ route }) {
               value={formData.email}
               onChange={handleChange}
               required
-              className="mt-1 p-2 block w-full rounded-md border-gray-700 shadow-md focus:border-green-500 focus:ring-green-500 sm:text-sm"
+              className="mt-1 p-2 block w-full rounded-md border border-gray-300  shadow-md focus:border-green-500 focus:ring-green-500 sm:text-sm"
             />
           </div>
 
@@ -102,7 +102,7 @@ function Contact({ route }) {
               onChange={handleChange}
               rows="4"
               required
-              className="mt-1 p-2 block w-full rounded-md border-gray-700 shadow-md focus:border-green-500 focus:ring-green-500 sm:text-sm"
+              className="mt-1 p-2 block w-full rounded-md border border-gray-300  shadow-md focus:border-green-500 focus:ring-green-500 sm:text-sm"
             ></textarea>
           </div>
 
