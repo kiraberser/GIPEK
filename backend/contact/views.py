@@ -6,15 +6,20 @@ from rest_framework import status
 from rest_framework.views import APIView
 
 # Create your views here.
-
 from .serializers import ContactSerializer, SubscribeBlogSerializer
 
 @api_view(['POST'])
 def ContactForm(request):
-    print(request.data)
     serializer = ContactSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save()
+        send_mail(
+            subject='Gracias por contactarte con nuestro equipo de soporte!',
+            message='En las proximas horas recibiras un correo sobre tus dudas\n Nuestro número de contacto en whatsapp es: 2321479161',
+            from_email='edwinvega3106@gmail.com',
+            recipient_list=[request.data['email']],
+            fail_silently=False
+        )
         return Response(serializer.data)
     return Response(serializer.errors, status=400)
 
