@@ -32,7 +32,7 @@ export default function Navbar() {
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
               <svg
-                className="w-8 h-8 text-green-500"
+                className="w-8 h-8 text-green-600 pr-1"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -45,9 +45,12 @@ export default function Navbar() {
                   d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
                 />
               </svg>
-              <div>
-                <Link to={'/'}><span className="ml-2 text-xl font-bold text-gray-800">Gipek</span></Link>
+              <div className="flex justify-center">
+                <Link to={'/'}>
+                  <span className="text-xl font-bold text-gray-800">Gipek</span>
+                </Link>
               </div>
+
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               <Link
@@ -66,14 +69,14 @@ export default function Navbar() {
                 to="/plants"
                 className="border-transparent text-gray-500 hover:border-green-600 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
               >
-                Plantas
+                Blog
               </Link>
             </div>
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
             <Link
               to="/contact"
-              className="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition duration-300 mr-4"
+              className="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-600 transition duration-300 mr-4"
             >
               Contacto
             </Link>
@@ -117,7 +120,7 @@ export default function Navbar() {
               className="border-transparent text-gray-700 hover:bg-green-50 hover:border-green-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
               onClick={handleMenuClick}
             >
-              Plantas
+              Blog
             </Link>
             <Link
               to="/login"
@@ -136,8 +139,8 @@ export default function Navbar() {
           </div>
           <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="flex items-center px-4">
-              <Link to={'/contact'} onClick={handleMenuClick} className="flex-shrink-0 bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition duration-300 mr-4">
-                Contactanos
+              <Link to={'/contact'} onClick={handleMenuClick} className="flex-shrink-0 bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-600 transition duration-300 mr-4">
+                Contacto
               </Link>
               <Link
                 to="/cart"

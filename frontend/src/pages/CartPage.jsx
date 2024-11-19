@@ -33,24 +33,20 @@ const CartPage = () => {
   const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
-    <div className="container mx-auto p-8 flex space-x-8">
+    <div className="container mx-auto p-4 md:p-8 flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8 mt-16">
       {/* Sección de productos */}
-      <div className="flex-1 bg-white p-6 shadow-md rounded-lg">
+      <div className="flex-1 bg-white p-6 shadow-2xl rounded-lg border border-gray-200">
         <h2 className="text-2xl font-semibold mb-6">Productos</h2>
         {/* Aquí pasamos la función addToCart a cada ProductCard */}
-        <div className="flex flex-wrap">
-          {[
-            { id: 1, name: 'Producto 1', price: 100, description: 'Descripción del producto 1', image: '/path/to/image1.jpg' },
-            { id: 2, name: 'Producto 2', price: 200, description: 'Descripción del producto 2', image: '/path/to/image2.jpg' },
-            { id: 3, name: 'Producto 3', price: 150, description: 'Descripción del producto 3', image: '/path/to/image3.jpg' }
-          ].map((product) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {cartItems.map((product) => (
             <ProductCard key={product.id} product={product} addToCart={addToCart} />
           ))}
         </div>
       </div>
 
       {/* Sección del carrito */}
-      <div className="w-1/3 bg-white p-6 shadow-md rounded-lg">
+      <div className="w-full md:w-1/3 bg-white p-6 shadow-2xl rounded-lg border border-gray-200">
         <h2 className="text-2xl font-semibold mb-6">Resumen del Carrito</h2>
         <div>
           {cartItems.length === 0 ? (
@@ -69,7 +65,7 @@ const CartPage = () => {
           <span className="font-semibold">Total:</span>
           <span className="font-semibold text-xl">${total}</span>
         </div>
-        <button className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+        <button className="w-full mt-4 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors duration-300">
           Finalizar compra
         </button>
       </div>

@@ -12,6 +12,7 @@ import Login from './components/common/Login';
 import Footer from './components/common/Footer'
 import ProductList from './components/common/ProductList';
 import Register from './components/common/Register';
+import ScrollToTop from "./components/specificComponent/ScrollToTop";
 
 function Logout() {
   localStorage.clear()
@@ -28,6 +29,7 @@ export default function App() {
   return (
     <>
       <Navbar /> {/* Colocado fuera de Routes */}
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path='*' element={<Error/>}/ >

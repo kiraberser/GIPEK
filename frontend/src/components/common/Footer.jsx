@@ -69,7 +69,7 @@ export default function Footer() {
   };
   
   return (
-    <footer className="bg-gray-100">
+    <footer className="bg-white border border-gray-300 ">
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
@@ -99,7 +99,7 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Introduce tu correo electrónico"
-                className="flex-grow px-4 py-2 rounded-l-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="flex-grow px-4 py-2 rounded-l-full border border-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required

@@ -36,7 +36,7 @@ function classNames(...classes) {
 
 export default function PriceSection() {
   return (
-    <div className="relative isolate bg-white px-6 py-16 sm:py-24 lg:py-32 min-h-screen">
+    <div className="relative isolate bg-white px-6 py-16 sm:py-24 lg:py-32 min-h-screen mt-20">
       <div className="mx-auto max-w-4xl text-center">
         <h2 className="text-base font-semibold leading-7 text-green-500">Precios</h2>
         <p className="mt-2 text-3xl sm:text-5xl font-semibold tracking-tight text-gray-900">
@@ -49,7 +49,7 @@ export default function PriceSection() {
           <div
             key={tier.id}
             className={classNames(
-              tier.featured ? 'bg-green-500 text-white shadow-lg' : 'bg-gray-100 text-green-900',
+              tier.featured ? 'bg-green-500 text-white shadow-lg' : 'bg-gray-100 border border-gray-300 text-green-900 shadow-lg',
               'rounded-3xl p-8 ring-1 ring-gray-900/10 transition-all duration-200 ease-in-out hover:shadow-2xl flex flex-col'
             )}
           >

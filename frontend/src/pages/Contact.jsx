@@ -56,8 +56,8 @@ function Contact({ route }) {
   }
 
   return (
-    <div className="bg-gray-50">
-      <div className="max-w-2xl py-28 mx-auto px-4 sm:px-6 lg:px-8 min-h-screen">
+    <div className="bg-white">
+      <div className="max-w-2xl py-28 mx-auto px-4 sm:px-6 lg:px-8 min-h-screen ">
         <h2 className="text-3xl font-extrabold text-gray-900 text-center">Contáctanos</h2>
         <p className="mt-4 text-lg text-gray-600 text-center">
           ¿Tienes alguna pregunta? Nos encantaría saber de ti. Completa el formulario y te responderemos a la brevedad.
@@ -66,7 +66,7 @@ function Contact({ route }) {
         {isSubmitted && <p className="text-green-600 text-center">¡Mensaje enviado exitosamente!</p>}
         {errorMessage && <p className="text-red-600 text-center">{errorMessage}</p>}
 
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit} method="POST">
+        <form className="mt-8 space-y-6 " onSubmit={handleSubmit} method="POST">
           <div>
             <label htmlFor="username" className="block text-sm font-medium text-gray-700">Nombre</label>
             <input

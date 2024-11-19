@@ -29,7 +29,7 @@ export default function Register() {
       <form
         method="POST"
         onSubmit={handleSubmit}
-        className="bg-gray-100 text-green-900 rounded-3xl p-8 ring-1 ring-gray-900/10 shadow-xl w-full max-w-lg"
+        className="bg-white border border-gray-300 text-green-900 rounded-3xl p-8 ring-1 ring-gray-900/10 shadow-xl w-full max-w-lg"
       >
         <h1 className="text-lg font-semibold leading-7 text-green-600 mb-4">Crear cuenta</h1>
         <div className="space-y-4">

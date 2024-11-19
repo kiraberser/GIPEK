@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function HeroSection() {
   return (
-    <div className="bg-white min-h-screen flex flex-col lg:grid lg:grid-cols-2 ">
+    <div className="min-h-screen flex flex-col lg:grid lg:grid-cols-2 ">
       {/* Contenido del texto */}
-      <div className="max-w-7xl lg:mr-4 mx-auto px-6 py-8 md:mt-16 sm:mt-16 sm:py-6 flex flex-col justify-center mt-12 ">
+      <div className="max-w-7xl lg:mr-4 mx-auto px-6 py-8 md:mt-6 sm:mt-16 sm:py-6 flex flex-col justify-center mt-14">
         <div className="text-center lg:text-start ">
           <div className="flex justify-center lg:justify-start mb-6 space-x-4 sm:space-x-6">
             <Leaf className="h-10 w-10 sm:h-12 sm:w-12 text-green-600" />
@@ -37,7 +37,7 @@ export default function HeroSection() {
         <img
           src="/assets/image_plant.jpg"
           alt="Kit de Jardinería"
-          className="object-scale-down rounded-lg md:w-3/5"
+          className="object-scale-down rounded-3xl md:w-3/5"
         />
       </div>
     </div>

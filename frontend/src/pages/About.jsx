@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="container mx-auto px-6 py-10 ">
+    <div className="container mx-auto px-6 py-10 bg-white min-h-screen lg:mt-20">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Columna de Misión, Visión y Valores */}
         <div className="sm:m-10 lg:p-16">
@@ -85,7 +85,7 @@ const About = () => {
         {/* Columna de Imagen */}
         <div className="relative flex justify-center">
           {/* Fondo tenue detrás de la imagen */}
-          <div className="absolute inset-0 bg-gradient-to-r from-green-100 to-green-100 rounded-3xl blur-lg opacity-50"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-green-100 to-green-100 rounded-full blur-3xl opacity-100"></div>
 
           {/* Imagen principal con bordes y efectos */}
           <img

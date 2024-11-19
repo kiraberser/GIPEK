@@ -92,18 +92,18 @@ function TestimonialWidget({ rtl }) {
 
 
   return (
-    <div>
-      <div>
-        {rtl ? <div><h1 className="text-4xl sm:text-5xl md:text-6xl text-center text-green-600 m-4 sm:m-6 md:m-10">
-          Cultivando tu conexión con la naturaleza
+    <div >
+      <div className="sm:mt-16">
+        {rtl ? <div><h1 className="text-4xl sm:text-5xl  md:text-6xl text-center text-green-600 m-4 sm:m-6 md:m-10 lg-pt-10">
+          Cultivando tú conexión con la naturaleza
         </h1>
         </div> : null}
       </div>
-      <div className="relative isolate bg-white overflow-hidden text-black">
+      <div className="relative isolate bg-gray overflow-hidden text-black">
         <Slider {...settings}>
           {items.map((item, index) => (
             <div key={index} className="p-4">
-              <div className="overflow-hidden rounded-2xl bg-gray-100 shadow-lg p-8 border border-gray-300 sm:w-auto">
+              <div className="overflow-hidden rounded-2xl bg-gray-50 shadow-lg p-8 border border-gray-300 sm:w-auto">
                 <div className="flex items-center space-x-4 mb-4">
                   <img
                     src={item.avatar}

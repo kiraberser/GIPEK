@@ -33,12 +33,12 @@ function Login() {
             <form
                 method="POST"
                 onSubmit={handleSubmit}
-                className="bg-gray-100 text-green-900 rounded-3xl p-8 ring-1 ring-gray-900/10 shadow-xl w-full max-w-lg"
+                className="bg-white text-green-900 border border-gray-300 rounded-3xl p-8 ring-1 ring-gray-900/10 shadow-2xl w-full max-w-lg"
             >
                 <h1 className="text-lg font-semibold leading-7 text-green-600 mb-4">Iniciar sesión</h1>
                 <div className="space-y-4">
                     <input
-                        className="p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500 w-full"
+                        className="p-3 border border-gray-400 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500 w-full"
                         name="username"
                         type="text"
                         value={loginValues.username}
@@ -46,7 +46,7 @@ function Login() {
                         onChange={handleChange}
                     />
                     <input
-                        className="p-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500 w-full"
+                        className="p-3 border border-gray-400 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500 w-full"
                         name="password"
                         type="password"
                         value={loginValues.password}
@@ -61,7 +61,7 @@ function Login() {
                             id="remember"
                             name="remember"
                             type="checkbox"
-                            className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+                            className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-500 rounded"
                         />
                         <label htmlFor="remember" className="text-sm text-gray-600">Recuérdame</label>
                     </div>
