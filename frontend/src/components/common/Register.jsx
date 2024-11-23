@@ -1,6 +1,14 @@
 import { useState } from 'react';
+import api from '../../api';
+import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie'
 
 export default function Register() {
+  const router = import.meta.env.VITE_API_URL + '/user/create-user/'
+  const csrfToken = Cookies.get('csrftoken')
+  console.log(csrfToken)
+  console.log(router)
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const [signupValues, setSignupValues] = useState({
     username: '',
     email: '',
@@ -15,15 +23,39 @@ export default function Register() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lógica de registro, validaciones y envío de datos
-    console.log('Usuario:', signupValues.username);
-    console.log('Correo electrónico:', signupValues.email);
-    console.log('Contraseña:', signupValues.password);
-    console.log('Confirmar contraseña:', signupValues.confirmPassword);
-  };
+    try {
+      if (signupValues.password !== signupValues.confirmPassword) {
+        alert('Las contraseñas no coinciden')
+        return
+      }
+      setIsSubmitted(true)
 
+      const res = await api.post(router, {
+        username: signupValues.username,
+        email: signupValues.email,
+        password: signupValues.password
+      },
+        {
+          headers: {
+            'X-CSRFToken': csrfToken,
+            'Content-Type': 'application/json'
+          },
+          withCredentials: true
+        }
+      )
+      setSignupValues({ username: '', password: '', email: '', confirmPassword: '' })
+      console.log(res.status)
+      return res
+    } catch (error) {
+      console.log(error)
+      alert('Hay un error', error.status)
+    } finally {
+      setIsSubmitted(false)
+    }
+
+  }
   return (
     <div className="flex items-center justify-center min-h-screen bg-white px-6 py-16 sm:py-24 lg:py-32">
       <form
@@ -70,18 +102,19 @@ export default function Register() {
         <div className="flex justify-between items-center mt-4">
           <button
             type="submit"
-            className="bg-green-600 text-white rounded-md py-2 px-4 text-sm font-semibold hover:bg-green-700 w-full"
+            disabled={isSubmitted}
+            className={`${isSubmitted ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700'
+              } text-white rounded-md py-2 px-4 text-sm font-semibold w-full`}
           >
-            Crear cuenta
+            {isSubmitted ? 'Cargando...' : 'Crear cuenta'}
           </button>
         </div>
-
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
             ¿Ya tienes una cuenta?{' '}
-            <a href="/login" className="text-green-600 hover:text-green-700 font-semibold">
+            <Link to={"/login"} className="text-green-600 hover:text-green-700 font-semibold">
               Inicia sesión aquí
-            </a>
+            </Link>
           </p>
         </div>
       </form>

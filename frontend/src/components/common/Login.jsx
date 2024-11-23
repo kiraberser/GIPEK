@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import api from '../../api'
 
 function Login() {
     const Navigate = useNavigate()
+    const route = import.meta.env.VITE_API_URL + '/user/list-user/'
     const [loginValues, setLoginValues] = useState({
         username: '',
         password: ''
@@ -17,15 +19,17 @@ function Login() {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(loginValues.username, loginValues.password)
-        setLoginValues(
-            {
-                username: '',
-                password: ''
-            }
-        )
+        try {
+            const res = await api.get(route, {
+                username: loginValues.username,
+                password: Login.password
+            })
+        } catch(error) {
+            console.log(error)
+        }
         Navigate('/')
     }
     return (

@@ -1,0 +1,44 @@
+1.- Creo la base de datos donde esta mi usuario
+from django.db import models
+from django.contrib.auth.models import User
+
+# Create your models here.
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    gmail = models.EmailField(max_length=50, null=False)
+
+2.- Creo serializer para visualizar los datos en formato json
+from django.contrib.auth.models import User
+from rest_framework import serializers 
+
+from backend.user.models import UserProfile
+
+class CreateUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = '__all__'
+        extra_kwargs = {"password": {"write_only": True}}
+
+3.-Creo un views donde pueda hacer un post mediante CreateAPIView, al igual que un metodo get, para poder saber si mi usuario está registrado
+
+from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
+from django.contrib.auth.models import User
+
+from .serializers import CreateUserSerializer
+# Create your views here.
+
+class CreateUser(generics.GenericAPIView):
+    authentication_classes = [authentication.TokenAuthentication]
+    queryset = User.objects.all()
+    serializer_class = CreateUserSerializer
+    permission_classes = [permissions.IsAdminUser]
+
+class ListUsers(generics.ListAPIView):
+    authentication_classes = [authentication.TokenAuthentication]
+    queryset = User.objects.all()
+    serializer_class = CreateUserSerializer
+    permission_classes = [permissions.IsAdminUser]
+    
+    
